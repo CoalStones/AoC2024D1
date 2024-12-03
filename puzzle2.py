@@ -22,9 +22,29 @@ if __name__ == "__main__":
     # sorting the list acending
     l1.sort()
     l2.sort()
-    oc2 = []
+    occurances = []
+    
     
     for i in range (len(l1)):
+        j = 0
+        appearance = 0
+        if i != 0 and l1[i] == l1[i-1]:
+            occurances.append(occurances[i-1])
+        else:
+            for datum in l2:
+                if l1[i] == datum:
+                    j += 1
+                    appearance += 1
+                if datum > l1[i]:
+                    break
+            occurances.append(appearance)
+        # print(occurances[i])
+       
+    total = 0 
+    for i in range (len(occurances)):
+        total += l1[i] * occurances[i]
         
+    print(total)
         
     # find how many times numbers in l1 occur in l2
+        
